@@ -1,0 +1,27 @@
+{% extends "basetemplate.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block content %}
+    <h1>Kontakta Oss</h1>
+    <p>Har du frågor eller feedback? Tveka inte att kontakta oss!</p>
+
+    <form action="" method="post">
+        {{ form.csrf_token }}
+        {{ render_field(form.name) }}
+        <!-- <input type="text" id="namn" name="namn" required><br> -->
+
+        {{ render_field(form.email) }}
+        <!-- <input type="email" id="email" name="email" required><br> -->
+
+        {{ render_field(form.text) }}
+        <!-- <textarea id="meddelande" name="meddelande" required></textarea><br> -->
+
+        <input type="submit" value="Skicka">
+    </form>
+{% endblock %}
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/kontakt.js') }}"></script>
+{% endblock %}

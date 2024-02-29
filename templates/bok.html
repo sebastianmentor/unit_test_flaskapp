@@ -1,0 +1,17 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}{{ bok.titel }}{% endblock %}
+
+{% block content %}
+    <h1>{{ bok.titel }}</h1>
+    <div class="bok-info">
+        <p><strong>Författare:</strong> {{ bok.forfattare }}</p>
+        <p><strong>ISBN:</strong> {{ bok.isbn }}</p>
+        <p><strong>Lagerantal:</strong> {{ bok.lagerantal }}</p>
+        <p><strong>Pris:</strong> {{ bok.pris }} kr</p>
+        <div class="book">
+        <img src="{{ url_for('static', filename='img/bok1.png') }}" alt="{{ bok.titel }}">
+        </div>
+        <!-- Ytterligare information om boken kan läggas till här -->
+    </div>
+{% endblock %}

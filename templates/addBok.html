@@ -1,0 +1,23 @@
+{% extends "basetemplate.html" %}
+{% from "_formhelpers.html" import render_field %}
+
+
+{% block title %}Skapa bok{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    {{ form.csrf_token }}
+
+    {{ render_field(form.title) }}
+
+    {{ render_field(form.forfattare) }}
+
+    {{ render_field(form.isbn) }}
+
+    {{ render_field(form.pris) }}
+
+    {{ render_field(form.lagerantal) }}
+
+    <input type="submit" value="Skicka">
+</form>
+{% endblock %}

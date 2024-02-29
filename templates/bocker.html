@@ -1,0 +1,56 @@
+{% extends "basetemplate.html" %}
+
+
+{% block title %}Böcker{% endblock %}
+
+{% block content %}
+    <h1>Våra Böcker</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Titel
+                    <a href="{{url_for('bocker', sort_column = 'titel', sort_order = 'asc')}}">
+                        <i class='bx bxs-up-arrow'></i>
+                    </a>
+                    <a href="{{url_for('bocker', sort_column = 'titel', sort_order = 'desc')}}">
+                        <i class='bx bxs-down-arrow'></i>
+                    </a>
+                </th>
+                <th>Författare
+                    <a href="{{url_for('bocker', sort_column = 'forfattare', sort_order = 'asc')}}">
+                        <i class='bx bxs-up-arrow'></i>
+                    </a>
+                    <a href="{{url_for('bocker', sort_column = 'forfattare', sort_order = 'desc')}}">
+                        <i class='bx bxs-down-arrow'></i>
+                    </a>
+                </th>
+                <th>ISBN
+                    <a href="{{url_for('bocker', sort_column = 'isbn', sort_order = 'asc')}}">
+                        <i class='bx bxs-up-arrow'></i>
+                    </a>
+                    <a href="{{url_for('bocker', sort_column = 'isbn', sort_order = 'desc')}}">
+                        <i class='bx bxs-down-arrow'></i>
+                    </a>
+                </th>
+                <th>Pris
+                    <a href="{{url_for('bocker', sort_column = 'pris', sort_order = 'asc')}}">
+                        <i class='bx bxs-up-arrow'></i>
+                    </a>
+                    <a href="{{url_for('bocker', sort_column = 'pris', sort_order = 'desc')}}">
+                        <i class='bx bxs-down-arrow'></i>
+                    </a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bok in all_books |sort(reverse = true if sort_order == "desc" else false, attribute=sort_column) %}
+            <tr>
+                <td>{{ bok.titel }}</td>
+                <td>{{ bok.forfattare }}</td>
+                <td>{{ bok.isbn }}</td>
+                <td>{{ bok.pris }} kr</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

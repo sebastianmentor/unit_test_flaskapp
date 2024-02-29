@@ -1,0 +1,42 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Kunddetaljer{% endblock %}
+
+{% block content %}
+    <h1>Kunddetaljer</h1>
+    <div class="kund-info">
+        <h2>{{ kund.namn }}</h2>
+        <p><strong>Adress:</strong> {{ kund.adress }}</p>
+        <p><strong>E-post:</strong> {{ kund.epost }}</p>
+        <p><strong>Telefonnummer:</strong> {{ kund.telefonnummer }}</p>
+        <!-- Ytterligare kunddetaljer kan läggas till här -->
+    </div>
+
+    <!-- Beställningsinformation -->
+    <h2>Beställningar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Beställnings-ID</th>
+                <th>Datum</th>
+                <th>Status</th>
+                <!-- Lägg till fler kolumner om det behövs -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for bestallning in kund.bestallningar %}
+            <tr>
+                <td>
+                    <a href="{{url_for('orders', bestallningid=bestallning.id)}}">
+                    {{ bestallning.id }}
+                    </a>
+                </td>
+                <td>{{ bestallning.bestallningsdatum }}</td>
+                <td>{{ bestallning.leveransstatus }}</td>
+                <!-- Fler datakolumner kan läggas till här -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

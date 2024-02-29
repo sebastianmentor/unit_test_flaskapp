@@ -1,0 +1,32 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Välkommen till Lindas Lustfyllda Bokhandel{% endblock %}
+
+{% block content %}
+    <h1>Välkommen till Lindas Lustfyllda Bokhandel!</h1>
+    <p>Här hittar du de senaste och mest spännande böckerna!</p>
+
+    <section id="featured-books">
+        <h2>Utvalda Böcker</h2>
+        <div class="book">
+            <img src="/static/img/bok2.png" alt="Bok 1">
+            <h3>Boktitel 1</h3>
+            <p>Bokbeskrivning...</p>
+        </div>
+        <div class="book">
+            <img src="/static/img/bok1.png" alt="Bok 2">
+            <h3>Boktitel 2</h3>
+            <p>Bokbeskrivning...</p>
+        </div>
+        <!-- Fler böcker kan läggas till här -->
+    </section>
+
+    <section id="about">
+        <h2>Om Oss</h2>
+        <p>
+            Lindas Lustfyllda Bokhandel grundades år 2024 och har sedan dess erbjudit 
+            ett brett utbud av böcker inom alla möjliga genrer. Besök oss i butiken 
+            eller handla online för att upptäcka dina nya favoritböcker!
+        </p>
+    </section>
+{% endblock %}

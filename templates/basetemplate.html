@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <!-- Lägg till ytterligare CSS-länkar här -->
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Navigationslänkar här -->
+            
+            <a href="{{ url_for('index') }}" class="{{'active' if active_page == 'start_page' }}">Hem</a>
+            <a href="{{ url_for('bocker') }}" class="{{'active' if active_page == 'bocker_page' }}">Böcker</a>
+            <a href="{{ url_for('kontakt') }}"class="{{'active' if active_page == 'kontakt_page' }}">Kontakt</a>
+            {% if "Admin" in current_user.roles or "Cashier" in current_user.roles%}
+            <a href="{{ url_for('kunder')}}"class="{{'active' if active_page == 'kund_page' }}">Kunder</a>
+            {% endif%}
+            <!-- Fler länkar kan läggas till här -->
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Huvudinnehållet kommer att infogas här från barnmallar -->
+        {% endblock %}
+    </main>
+
+    <footer>
+        <p>© 2024 Lindas Lustfyllda Bokhandel</p>
+        <!-- Eventuell fotinformation -->
+    </footer>
+
+    {% block script %}
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <!-- Lägg till ytterligare JavaScript-länkar här -->
+
+    {% endblock %}
+</body>
+</html>

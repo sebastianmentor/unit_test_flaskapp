@@ -1,0 +1,40 @@
+{% extends "basetemplate.html" %}
+
+{% block title %}Beställningsdetaljer{% endblock %}
+
+{% block content %}
+    <h1>Beställningsdetaljer</h1>
+    <div class="bestallning-info">
+        <p><strong>Beställnings-ID:</strong> {{ bestallning.id }}</p>
+        <p><strong>Datum:</strong> {{ bestallning.bestallningsdatum }}</p>
+        <p><strong>Status:</strong> {{ bestallning.leveransstatus }}</p>
+        <!-- Ytterligare beställningsinformation kan läggas till här -->
+    </div>
+
+    <!-- Lista av produkter i beställningen -->
+    <h2>Produkter i Beställningen</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Bokid</th>
+                <th>Antal</th>
+                <th>Pris per styck</th>
+                <th>Totalt</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detalj in bestallning.detaljer %}
+            <tr>
+                <td>
+                    <a href="{{url_for('bok', bokid=detalj.bok_id)}}">
+                        {{ detalj.bok_id }}
+                    </a>
+                </td> 
+                <td>{{ detalj.antal }}</td>
+                <td>{{ detalj.pris_per_enhet }} kr</td>
+                <td>{{ detalj.antal * detalj.pris_per_enhet }} kr</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
